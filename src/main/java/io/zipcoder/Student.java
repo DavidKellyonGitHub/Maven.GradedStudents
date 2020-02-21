@@ -1,16 +1,21 @@
 package io.zipcoder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Formatter;
 
 public class Student {
     private String firstName;
     private String lastName;
-    private ArrayList<Double> examScores;
+    private ArrayList<Double> examScores = new ArrayList<Double>();
 
     public Student(String first, String last, Double[] scores) {
         this.firstName = first;
         this.lastName = last;
+        for (int i = 0;i<scores.length;i++){
+            this.examScores.add(scores[i]);
+        }
+
         }
 
 
@@ -35,12 +40,9 @@ public class Student {
     }
 
     public String getExamScores(){
-        int i = 0;
-        String output = "Exam Scores:%n       Exam)";
-        Formatter outputFormat = new Formatter();
-        while (this.examScores.get(i) !=null && this.examScores.get(i)!= -1){
-            output += outputFormat.format(" %d ->%4d",i+1,this.examScores.get(i));
-
+        String output = "";
+        for (int i = 0; i < this.examScores.size();i++){
+            output += this.examScores.get(i) + ", ";
         }
         return output;
 
@@ -48,17 +50,15 @@ public class Student {
 
     public void addExamScore(double examScore){
         this.examScores.add(examScore);
-        Formatter outputFormat = new Formatter();
-        System.out.println(outputFormat.format("Exam Scores:%n     Exam %d -> %4d",this.examScores.size()-1,this.examScores.get(this.examScores.size()-1)));
+
     }
 
     public void setExamScore(int examNumber,double newScore){
         this.examScores.set(examNumber-1,newScore);
-        Formatter outputFormat = new Formatter();
-        System.out.println(outputFormat.format("Exam Scores:%n     Exam %d -> %4d",this.examScores.size()-1,this.examScores.get(this.examScores.size()-1)));
+
     }
 
-    public double getAverageExamScore(){
+    public double getAverageStudentExamScore(){
         Double sum = 0.0;
         for (Double grade : examScores){
             sum += grade;
@@ -70,7 +70,7 @@ public class Student {
     public String toString(){
         Formatter summary = new Formatter();
         String output = "";
-        output += summary.format("Student Name: %s %s %n > Average Score: %d %n > %s ",this.getFirstName(),getLastName(),getAverageExamScore(),getExamScores());
+        output += summary.format("Student Name: %s %s %n > Average Score: %d %n > %s ",this.getFirstName(),getLastName(),getAverageStudentExamScore(),getExamScores());
         return output;
 
     }
