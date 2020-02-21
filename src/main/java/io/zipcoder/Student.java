@@ -8,6 +8,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private ArrayList<Double> examScores = new ArrayList<Double>();
+    private String finalGrade;
 
     public Student(String first, String last, Double[] scores) {
         this.firstName = first;
