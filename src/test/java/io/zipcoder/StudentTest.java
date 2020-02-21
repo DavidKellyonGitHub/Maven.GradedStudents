@@ -69,7 +69,11 @@ public class StudentTest {
     }
 
     @Test
-    public void getAverageExamScore() {
+    public void getAverageStudentExamScore() {
+        Student bilbo = new Student("Bilbo","Baggins",new Double[] {100.0,90.0});
+        double expected = 95.0;
+        double actual = bilbo.getAverageStudentExamScore();
+        Assert.assertEquals(expected,actual,0);
     }
 
     @Test
