@@ -18,7 +18,7 @@ public class StudentTest {
     }
 
     @Test
-    public void getLastName() {
+    public void getLastNameTest() {
         Student testStudent = new Student("Gandalf", "Gray", new Double[]{100.0});
         String actual = testStudent.getLastName();
         String expected = "Gray";
@@ -61,7 +61,7 @@ public class StudentTest {
 
 
     @Test
-    public void addExamScore() {
+    public void addExamScoreTest() {
         Student testStudent = new Student("Smeagol","O'Gollum",new Double[]{100.0,90.0});
         testStudent.addExamScore(80.0);
         String actual = testStudent.getExamScores();
@@ -70,11 +70,16 @@ public class StudentTest {
     }
 
     @Test
-    public void setExamScore() {
+    public void setExamScoreTest() {
+        Student testStudent = new Student("Smeagol","O'Gollum",new Double[]{100.0,90.0});
+        testStudent.setExamScore(1,95.0);
+        String actual = testStudent.getExamScores();
+        String expected = "95.0, 90.0, ";
+        Assert.assertEquals(expected,actual);
     }
 
     @Test
-    public void getAverageStudentExamScore() {
+    public void getAverageStudentExamScoreTest() {
         Student bilbo = new Student("Bilbo","Baggins",new Double[] {100.0,90.0});
         double expected = 95.0;
         double actual = bilbo.getAverageStudentExamScore();
