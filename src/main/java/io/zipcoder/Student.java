@@ -16,8 +16,7 @@ public class Student {
         for (int i = 0;i<scores.length;i++){
             this.examScores.add(scores[i]);
         }
-
-        }
+    }
 
 
     public String getFirstName() {
@@ -42,11 +41,10 @@ public class Student {
 
     public String getExamScores(){
         String output = "";
-        for (int i = 0; i < this.examScores.size();i++){
+        for (int i = 0;i<examScores.size();i++) {
             output += this.examScores.get(i) + ", ";
         }
         return output;
-
     }
 
     public void addExamScore(double examScore){
@@ -67,13 +65,26 @@ public class Student {
         return sum/examScores.size();
     }
 
+
+
+    public String getFinalGrade() {
+        return finalGrade;
+    }
+
+    public void setFinalGrade(String finalGrade) {
+        this.finalGrade = finalGrade;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         Formatter summary = new Formatter();
         String output = "";
-        output += summary.format("Student Name: %s %s %n > Average Score: %d %n > %s ",this.getFirstName(),getLastName(),getAverageStudentExamScore(),getExamScores());
+        String examScoreString = "";
+        for (int i = 0; i < this.examScores.size();i++) {
+            examScoreString += "Exam " + (i + 1) + " -> " + this.examScores.get(i) + "\n";
+        }
+        output += summary.format("Student Name: %s %s %n > Average Score: %f %n > %s ", getFirstName(), getLastName(), getAverageStudentExamScore(), examScoreString);
         return output;
 
     }
-
 }
